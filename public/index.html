@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat-App</title>
   </head>
-  <body>
     <h1>chatting app</h1>
+    <input type="text" id="message" placeholder="Enter message"/>
+    <button id="sendBtn">Send</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const sendBtn = document.getElementById("sendBtn");
+      const messageInput = document.getElementById("message");
+
+      sendBtn.addEventListener("click", () => {
+        const message = messageInput.value;
+        socket.emit("message", message);
+      });
+    </script>
   </body>
 </html>

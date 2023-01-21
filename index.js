@@ -7,6 +7,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+io.on("connection", (socket) => {
+  socket.on("message", (message) => {
+    console.log("A new message", message);
+  });
+});
+
 app.use(express.static(path.resolve("./public")));
 
 app.get("/", (req, res) => {
