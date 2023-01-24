@@ -9,7 +9,7 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
   socket.on("message", (message) => {
-    console.log("A new message", message);
+    io.emit("message", message);
   });
 });
 
